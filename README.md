@@ -4,9 +4,9 @@ Eclipse Version: 2019-12 (4.14.0)
 
 1. ouvrir eclipse
 2. installer les plugins suivants si ce n'est pas fait (help -> Eclipse Marketplace):
-                - Buildship Gradle Integration 3.0
-                - Eclipse JST Server Adapters (Apache Tomcat,JOnAS,J2EE) Luna
-                - Maven (Java EE) Integration for Eclipse WTP (Luna/Mars) 1.2.0
+* [ ]  Buildship Gradle Integration 3.0
+* [ ]  Eclipse JST Server Adapters (Apache Tomcat,JOnAS,J2EE) Luna
+* [ ]  Maven (Java EE) Integration for Eclipse WTP (Luna/Mars) 1.2.0
 3. File -> Open projects From File System puis select archive
 4. Sélectionner l'archive RentManager.zip
 5. click droit sur le pom.xml -> maven -> Update project
