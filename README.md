@@ -4,17 +4,17 @@ Eclipse Version: 2019-12 (4.14.0)
 
 1. ouvrir eclipse
 2. installer les plugins suivants si ce n'est pas fait (help -> Eclipse Marketplace):
-3. Buildship Gradle Integration 3.0
-4. Eclipse JST Server Adapters (Apache Tomcat,JOnAS,J2EE) Luna
-5. Maven (Java EE) Integration for Eclipse WTP (Luna/Mars) 1.2.0
-6. File -> Open projects From File System puis select archive
-7. Sélectionner l'archive RentManager.zip
-8. click droit sur le pom.xml -> maven -> Update project
-9. run -> run configuration -> Maven Build click droit -> new configuration
-10. dans la section Goals -> clean install tomcat7:run
-11. cliquer sur run
-12. allez à l'url http://localhost:8080/RentManager
-13. Enjoy ! 
+                - Buildship Gradle Integration 3.0
+                - Eclipse JST Server Adapters (Apache Tomcat,JOnAS,J2EE) Luna
+                - Maven (Java EE) Integration for Eclipse WTP (Luna/Mars) 1.2.0
+3. File -> Open projects From File System puis select archive
+4. Sélectionner l'archive RentManager.zip
+5. click droit sur le pom.xml -> maven -> Update project
+6. run -> run configuration -> Maven Build click droit -> new configuration
+7. dans la section Goals -> clean install tomcat7:run
+8. cliquer sur run
+9. allez à l'url http://localhost:8080/RentManager
+10. Enjoy ! 
 
 
 ## CONTROLLER
