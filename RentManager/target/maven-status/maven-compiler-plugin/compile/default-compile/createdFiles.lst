@@ -14,6 +14,7 @@ com\ensta\rentmanager\model\ModeleCarac.class
 com\ensta\rentmanager\service\VehicleService.class
 com\ensta\rentmanager\model\VehicleReservation.class
 com\ensta\rentmanager\dao\ReservationDao.class
+controller\RentDetailServlet.class
 com\ensta\rentmanager\exception\DaoException.class
 com\ensta\rentmanager\model\Reservation.class
 com\ensta\rentmanager\dao\VehicleDao.class

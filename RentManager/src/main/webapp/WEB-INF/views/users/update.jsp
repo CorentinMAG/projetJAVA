@@ -69,6 +69,10 @@
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
+                            <span id="errorNom"></span>
+                            <span id="errorPrenom"></span>
+                            <span id="errorMail"></span>
+                            <span id="errorNaissance"></span>
                                 <button type="submit" class="btn btn-info pull-right">Update</button>
                             </div>
                             <!-- /.box-footer -->
@@ -87,5 +91,77 @@
 <!-- ./wrapper -->
 
 <%@ include file="/WEB-INF/views/common/js_imports.jsp" %>
+<script>
+let button = document.querySelector('button');
+let input_date=document.querySelector('#naissance');
+let input_nom = document.querySelector('#last_name');
+let input_prenom=document.querySelector('#first_name');
+let input_email=document.querySelector('#email');
+let span_nom=document.querySelector('#errorNom');
+let span_prenom=document.querySelector('#errorPrenom');
+let span_mail=document.querySelector('#errorMail');
+let span_naissance=document.querySelector('#errorNaissance');
+input_nom.addEventListener('input',(e)=>{
+	if(e.target.value.length<3 && e.target.value.length>0){
+	span_nom.classList="alert alert-warning";
+	button.disabled=true;
+	span_nom.textContent="Le nom doit comporter plus de 3 caracteres !";
+	}else if(e.target.value.length>=3){
+	span_nom.classList="alert alert-success";
+	button.disabled=false;
+	span_nom.textContent="Nom valide !";
+	}else{
+	span_nom.innerHTML="";
+	span_nom.classList="";
+	button.disabled=false;
+	}
+
+})
+input_prenom.addEventListener('input',(e)=>{
+	if(e.target.value.length<3 && e.target.value.length>0){
+	span_prenom.classList="alert alert-warning";
+	button.disabled=true;
+	span_prenom.textContent="Le prenom doit comporter plus de 3 caracteres !";
+	}else if (e.target.value.length>=3){
+	span_prenom.classList="alert alert-success";
+	button.disabled=false;
+	span_prenom.textContent="Prenom valide !";
+	}else{
+	span_prenom.innerHTML="";
+	span_prenom.classList="";
+	button.disabled=false;
+	}
+
+})
+input_email.addEventListener('input',(e)=>{
+	if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(e.target.value)){
+	span_mail.classList="alert alert-success";
+	button.disabled=false;
+	span_mail.textContent="Mail valide !";
+	}else{
+	span_mail.classList="alert alert-warning";
+	button.disabled=true;
+	span_mail.textContent="Entrer un mail valide !";
+	if(e.target.value.length==0){
+	span_mail.innerHTML="";
+	span_mail.classList="";
+	button.disabled=false;
+	}
+	}
+
+})
+input_date.addEventListener('input',(e)=>{
+	if(Number(e.target.value.split('-')[0])>2002){
+	span_naissance.classList="alert alert-warning";
+	button.disabled=true;
+	span_naissance.textContent="Le client doit avoir plus de 18 ans !";
+	}else{
+	span_naissance.classList="alert alert-success";
+	button.disabled=false;
+	span_naissance.textContent="Date valide !";
+	}
+
+})
+</script>
 </body>
 </html>

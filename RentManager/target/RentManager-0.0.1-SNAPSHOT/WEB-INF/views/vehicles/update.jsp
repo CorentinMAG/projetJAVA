@@ -62,6 +62,7 @@
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
+                            <span id="span_places"></span>
                                 <button type="submit" class="btn btn-info pull-right">Update</button>
                             </div>
                             <!-- /.box-footer -->
@@ -81,6 +82,31 @@
 
 <%@ include file="/WEB-INF/views/common/js_imports.jsp" %>
 
+<script>
+let button=document.querySelector('button');
+let input_places=document.querySelector('#places');
+let span_places=document.querySelector('#span_places');
 
+input_places.addEventListener('input',(e)=>{
+if(isNaN(e.target.value)==false){
+	if(e.target.value==""){
+		span_places.classList="alert alert-warning";
+		button.disabled=true;
+		span_places.textContent="Vous devez entrer un chiffre !";
+	}else{
+	if(Number(e.target.value)>9 || Number(e.target.value)<2){
+	span_places.classList="alert alert-warning";
+	button.disabled=true;
+	span_places.textContent="Le nombre de places doit etre compris entre 2 et 9 !";
+	}else{
+	span_places.classList="alert alert-success";
+	button.disabled=false;
+	span_places.textContent=" Nombre de places valide !";
+	}
+	}
+	
+}
+})
+</script>
 </body>
 </html>

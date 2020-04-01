@@ -52,6 +52,8 @@
                                 </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
+                            <span id="debut"></span>
+                            <span id="fin"></span>
                                 <button type="submit" class="btn btn-info pull-right">Update</button>
                             </div>
                             <!-- /.box-footer -->
@@ -70,5 +72,16 @@
 <!-- ./wrapper -->
 
 <%@ include file="/WEB-INF/views/common/js_imports.jsp" %>
+<script>
+console.log('huhuh')
+let debut=document.querySelector('#debut');
+let fin=document.querySelector('#fin');
+let input_debut=document.querySelector('#date_debut');
+let input_fin=document.querySelector('#date_fin');
+let button=document.querySelector('button');
+input_fin.addEventListener('input',(e)=>{
+console.log(e.taget.value})
+input_fin.addEventListener('blur',(e)=>console.log(e.target.value))
+</script>
 </body>
 </html>
