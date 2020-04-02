@@ -48,6 +48,11 @@ public class ReservationService {
 		}
 	}
 	
+	private long compareDate(Date debut,Date fin) {
+		final long MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24; 
+		long delta = debut.getTime() - fin.getTime();
+		return Math.abs(delta / (MILLISECONDS_PER_DAY));
+	}
 	public void checkDate(Date debut,Date fin,int id_vehicle) throws ServiceException{
 		try {
 			List<Reservation> allreservation =reservationdao.findResaByVehicleId(id_vehicle);
@@ -60,13 +65,27 @@ public class ReservationService {
 											
 										}
 			}
-			if(fin.getYear()==debut.getYear() && fin.getMonth()==debut.getMonth()) {
-				int nbjours = fin.getDate() -debut.getDate();
-				if(nbjours>7) {
+			int nbjours = fin.getDate() -debut.getDate();
+			if(compareDate(debut,fin)>7) {
 					throw new ServiceException("Impossible de louer un véhicule plus de 7 jours");
 				}
-			}else {
-				throw new ServiceException("Impossible de louer un véhicule plus de 7 jours");
+		}catch(DaoException e) {
+			throw new ServiceException(e.getMessage());
+		}
+	}
+	public void lessThanThirtiesDays(Date debut,Date fin,int id_vehicle) throws ServiceException{
+		try {
+			List<Reservation> allreservation=reservationdao.findResaByVehicleId(id_vehicle);
+			if(allreservation.size()>0) {
+				for(Reservation rsvcr:allreservation) {
+					if(fin.getMonth() == rsvcr.getDebut().getMonth() && fin.getYear() == rsvcr.getDebut().getYear() || fin.getMonth() == rsvcr.getDebut().getMonth()+1 && fin.getYear() == rsvcr.getDebut().getYear()) {
+						if(compareDate(fin,rsvcr.getDebut())<=30 && compareDate(rsvcr.getFin(),debut)<=30) {
+						}else {
+							throw new ServiceException("Impossible de louer un même véhicule plus de 30 jours");
+					}
+						
+					}	
+				}
 			}
 			
 		}catch(DaoException e) {

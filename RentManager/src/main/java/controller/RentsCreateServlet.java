@@ -49,6 +49,7 @@ public class RentsCreateServlet extends HttpServlet{
 			Reservation reservation = new Reservation(Integer.parseInt(client_id),Integer.parseInt(vehicle_id),debut,fin);
 			try {
 				reservationservice.checkDate(debut, fin,Integer.parseInt(vehicle_id));
+				reservationservice.lessThanThirtiesDays(debut, fin, Integer.parseInt(vehicle_id));
 				reservationservice.create(reservation);
 				response.sendRedirect("/RentManager/rents");
 				return;
@@ -59,6 +60,9 @@ public class RentsCreateServlet extends HttpServlet{
 				}
 				if(e.getMessage()=="Impossible de louer un véhicule plus de 7 jours") {
 					session.setAttribute("erroraddreservation", "impossible de louer un véhicule plus de 7 jours !");
+				}
+				if(e.getMessage()=="Impossible de louer un même véhicule plus de 30 jours") {
+					session.setAttribute("erroraddreservation", "Impossible de louer un même véhicule plus de 30 jours");
 				}
 			}
 			doGet(request,response);
