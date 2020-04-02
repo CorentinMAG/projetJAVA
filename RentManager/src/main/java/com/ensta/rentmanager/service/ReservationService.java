@@ -82,12 +82,10 @@ public class ReservationService {
 						if(compareDate(fin,rsvcr.getDebut())<=30 && compareDate(rsvcr.getFin(),debut)<=30) {
 						}else {
 							throw new ServiceException("Impossible de louer un même véhicule plus de 30 jours");
-					}
-						
+					}	
 					}	
 				}
 			}
-			
 		}catch(DaoException e) {
 			throw new ServiceException(e.getMessage());
 		}
